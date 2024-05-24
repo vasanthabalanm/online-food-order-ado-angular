@@ -1,0 +1,80 @@
+<div class="container-fluid bg-light d-flex justify-content-around">
+    <div class="px-3 py-5">
+      <h3 class="fw-bold">Pending User!</h3>
+      <table class="whole-table-content  bg-white">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Mail</th>
+              <th>Role</th>
+              <th>Phone Number</th>
+              <th>Approve</th>
+              <th>Decline </th>
+            </tr>
+          </thead>
+          <tbody *ngIf="pendingUserData && pendingUserData.length > 0; else noData">
+              <tr *ngFor="let waitingUser of pendingUserData">
+                  <td>{{waitingUser.userName}}</td>
+                  <td>{{waitingUser.email}}</td>
+                  <td>{{waitingUser.userRole}}</td>
+                  <td>{{waitingUser.userPhone}}</td>
+                  <td class="text-center">
+                      <button class="btn" (click)="approveUser(waitingUser)">
+                          <i class="fa fa-check icon" ></i>
+                      </button>
+                  </td>
+                  <td class="text-center">
+                    <button class="btn" (click)="deleteUser(waitingUser.id)">
+                      <i class="fa fa-trash-o icon"></i>
+                    </button>
+                  </td>
+                </tr>
+          </tbody>
+          <ng-template #noData>
+              <tr>
+                <td colspan="7">No data available</td>
+              </tr>
+          </ng-template>
+      </table>
+  </div>
+  <!-- vendor -->
+  <div class="px-3 py-5">
+      <h3 class="fw-bold">Pending Vendor!</h3>
+      <table class="whole-table-content bg-white">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Mail</th>
+              <th>Role</th>
+              <th>Phone Number</th>
+              <th>Approve</th>
+              <th>Decline </th>
+            </tr>
+          </thead>
+          <tbody *ngIf="pendingVendorData && pendingVendorData.length > 0; else noData">
+              <tr *ngFor="let waitingVendor of pendingVendorData">
+                  <td>{{waitingVendor.userName}}</td>
+                  <td>{{waitingVendor.email}}</td>
+                  <td>{{waitingVendor.userRole}}</td>
+                  <td>{{waitingVendor.userPhone}}</td>
+                  <td class="text-center">
+                      <button class="btn" (click)="approveVendor(waitingVendor)">
+                          <i class="fa fa-check icon" ></i>
+                      </button>
+                    </td>
+                  <td class="text-center">
+                    <button class="btn" (click)="deleteVendor(waitingVendor.id)">
+                      <i class="fa fa-trash-o icon"></i>
+                    </button>
+                  </td>
+                </tr>
+          </tbody>
+          <ng-template #noData>
+              <tr>
+                <td colspan="7">No data available</td>
+              </tr>
+          </ng-template>
+      </table>
+  </div>
+</div>
+

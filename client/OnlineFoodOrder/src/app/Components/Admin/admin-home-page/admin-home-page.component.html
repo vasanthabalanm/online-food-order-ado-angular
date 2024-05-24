@@ -1,0 +1,118 @@
+<div class="bg-image container-fluid">
+    <div class="container-fluid  py-4 full-box">
+        <div class="container">
+            <p class="intro-quote">Welcome Back {{email}}!</p>
+        <div class="wrapper-main-content">
+                <div class="card own-card" style="width: 18rem;">
+                    <div class="d-flex">
+                        <div>
+                            <img src="../../../../assets/images/admindashboard/hotel.png" class="images">
+                        </div>
+                        <div class="card-body py-4">
+                            <h5 class="card-title text-center">No of Hotels</h5>
+                            <p class="card-text text-center">{{hotelCount}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card own-card" style="width: 18rem;">
+                    <div class="d-flex">
+                        <div>
+                            <img src="../../../../assets/images/admindashboard/branch.png" class="images">
+                        </div>
+                        <div class="card-body py-4">
+                            <h5 class="card-title text-center">No of Branch</h5>
+                            <p class="card-text text-center">{{branchCount}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card own-card" style="width: 18rem;">
+                    <div class="d-flex">
+                        <div>
+                            <img src="../../../../assets/images/admindashboard/approvedUser.png" class="images">
+                        </div>
+                        <div class="py-3 px-2">
+                            <h5 class="card-title text-center">No of Approved</h5>
+                            <p class=" card-text text-center">Users:{{approvedUserCount}} | Vendors:{{approvedVendorCount}} </p>  
+                        </div>
+                    </div>
+                </div>
+                <div class="card own-card" style="width: 18rem;">
+                    <div class="d-flex">
+                        <div>
+                            <img src="../../../../assets/images/admindashboard/pendingUser.png" class="images">
+                        </div>
+                        <div class="py-3 px-2">
+                            <h5 class="card-title text-center">No of Pending</h5>
+                            <p class=" card-text text-center">Users:{{PendingUserCount}} | Vendors:{{PendingVendorCount}}</p>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between counts-hotels">
+                <div>
+                    <div class="card content-card-height" style="width: 34rem;">
+                        <div class="card-body">
+                            <button type="button" class="float-end add-hotel-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Hotel</button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Add Hotel</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body px-5">
+                                            <form [formGroup]="Addhotel" (submit)="formHotelsubmit()">
+                                                <input type="text" class="hotel-input-box" formControlName="HotelName" placeholder="Enter Hotel Name" required >
+                                                    <div *ngIf="hotelname?.errors &&(hotelname?.touched || hotelname?.dirty)" class="text-danger">
+                                                        <p *ngIf="hotelname?.hasError('required')">HotelName is required</p>
+                                                        <p *ngIf="hotelname?.hasError('pattern')">Enter valid Hotel Name</p>
+                                                        <p *ngIf="hotelname?.hasError('nonamespace')">No Start and End space</p>
+                                                    </div> 
+                                                <button type="submit" class="add-hotel-btn">Save</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        <h5 class="card-title py-2"><img src="../../../../assets/images/admindashboard/list.png" class="new-images" alt="">List of Hotels</h5> 
+                        <div class="li-height">
+                            <ul *ngFor="let hotel of listofHotel;let i =index">
+                                <li>{{i+1}}. {{hotel.hotelName}}</li>
+                            </ul>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="px-3">
+                    <div class="card content-card-heights" style="width: 500px;">
+                        <div class="card-body ">
+                        <h5 class="card-title py-2">New Arrivals Approved! <img src="../../../../assets/images/admindashboard/latestnew.png" class="new-images" alt=""></h5>
+                            <div class="li-height">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>SI.No</th>
+                                            <th>User Name</th>
+                                            <th>Role</th>
+                                            <th>Email</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let visitors of NewArrivalsList;let i =index">
+                                            <td>{{i+1}}</td>
+                                            <td>{{visitors.userName}}</td>
+                                            <td>{{visitors.userRole}}</td>
+                                            <td>{{visitors.email}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

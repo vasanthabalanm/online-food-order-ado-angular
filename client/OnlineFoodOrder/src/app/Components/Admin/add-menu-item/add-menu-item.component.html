@@ -1,0 +1,82 @@
+<div class="menu-item-body">
+    <div class=" card">
+      <div class="card-body">
+        <form [formGroup]="addMenuForm" (ngSubmit)="addMenuDetails()">
+          <label class="fw-bold">Select the Branch:</label>
+          <br>
+          <select formControlName="HotelBranchId" class="selection-box" (change)="getAllbranch()">
+              <option value="" disabled selected>select the Branch</option>
+              <option *ngFor="let branch of listbranches" [value]="branch.id">{{branch.branchName}}</option>
+          </select>
+          <div *ngIf="hotelbranchid?.errors && (hotelbranchid?.touched || hotelbranchid?.dirty)" class="text-danger">
+            <p *ngIf="hotelbranchid?.hasError('required')">Branch is required</p>
+          </div>
+          <div class="float-end">
+            <div class="px-3">
+              <button class="btn btn-secondary" (click)="addMenuData()"[disabled]="addMenuForm.get('MenuDetails')?.invalid">
+                (+) Add Menu
+              </button>
+            </div>
+          </div>
+          <div>
+            <p class="fw-bold pt-4">Menu Details Need</p>
+          </div>
+          <div class="container fixed-height-add-menu py-3">
+            <table>
+              <thead>
+                <tr>
+                  <th>Menu Name</th>
+                  <th>Menu Quantity</th>
+                  <th>Price(Rs)</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody formArrayName="MenuDetails">
+                <tr *ngFor="let menu of getMenuDetailsControls();let i = index " [formGroupName]="i">
+                  <td>
+                    <input type="text" class="input-box-size" formControlName="MenuItems" />
+                    <div *ngIf="finderrorinFormarray(i).controls['MenuItems'].errors && (finderrorinFormarray(i).controls['MenuItems'].dirty || finderrorinFormarray(i).controls['MenuItems'].touched)">
+                      <small class="text-danger" *ngIf="finderrorinFormarray(i).controls['MenuItems'].hasError('required')">
+                        Menu Name is required
+                      </small>
+                      <small class="text-danger" *ngIf="finderrorinFormarray(i).controls['MenuItems'].hasError('nonamespaces')">
+                        No empty spaces both start and end
+                      </small>
+                    </div>
+                  </td>
+                  <td>
+                    <input type="number" class="input-box-size" formControlName="MenuQuantity" min="1" />
+                    <div *ngIf="finderrorinFormarray(i).controls['MenuQuantity'].errors && (finderrorinFormarray(i).controls['MenuQuantity'].dirty || finderrorinFormarray(i).controls['MenuQuantity'].touched)">
+                      <small class="text-danger" *ngIf="finderrorinFormarray(i).controls['MenuQuantity'].hasError('required')">
+                        Quantity is required
+                      </small>
+                    </div>
+                  </td>
+                  <td>
+                    <input type="number" class="input-box-size" formControlName="Price" min="1"/>
+                    <div *ngIf="finderrorinFormarray(i).controls['Price'].errors && (finderrorinFormarray(i).controls['Price'].dirty || finderrorinFormarray(i).controls['Price'].touched)">
+                      <small class="text-danger" *ngIf="finderrorinFormarray(i).controls['Price'].hasError('required')">
+                        Price is required
+                      </small>
+                    </div>
+                  </td>
+                  <td class="text-center">
+                    <button class="btn" (click)="removeMenuData(i)">
+                        <i class="fa fa-trash-o edited-delete-icon"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="d-flex float-end px-3">
+            <div class="px-3">
+              <button type="submit" class="add-menu-btn" [disabled]="!addMenuForm.valid || addMenuForm.get('MenuDetails')?.invalid">
+                submit
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+  </div>
+</div>

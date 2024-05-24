@@ -1,0 +1,64 @@
+<div class="container-fluid">
+    <div class="d-flex pt-2 px-4">
+        <div>
+            <img src="../../../assets/images/logo.png" width="50px" height="50px">
+        </div>
+        <div>
+            <a [routerLink]="['']" class="logo-name"><h5 class="py-3 fw-bold">Food <span class="text-warning">Service</span></h5></a>
+        </div>
+    </div> 
+    <div>
+        <div class="center-box">
+            <div class="overall pt-5">
+                <img src="../../../assets/images/registeruser/vendor.jpg" class="register-user-image">
+            </div>
+            <div class="entire-login-form">
+                <form [formGroup]="registerVendordetails" (submit)="registerdVendorValues()" class="px-5">
+                    <p class="note-back fw-bold">Welcome to register here!</p>
+                    <div class="scrollable-form">
+                        <div class="firstname">
+                            <label class="fw-bold">Name:</label>
+                            <input type="text" formControlName="UserName" class="input-box-size px-2" required (input)="nodigits($event)">
+                            <div *ngIf="vendorName?.errors && (vendorName?.touched || vendorName?.dirty)" class="text-danger">
+                                <p *ngIf="vendorName?.hasError('required')">Vendor is required</p>
+                                <p *ngIf="vendorName?.hasError('maxlength')">Max length 30</p>
+                                <p *ngIf="vendorName?.hasError('pattern')">Only letters allowed</p>
+                                <p *ngIf="vendorName?.hasError('nonamespace')">No Start and End space</p>
+                            </div>
+                        </div>
+                        <div class="email">
+                            <label class="fw-bold">Email:</label>
+                            <input type="email" formControlName="Email" class="input-box-size px-2" required>
+                            <div *ngIf="vendorEmail?.errors &&(vendorEmail?.touched || vendorEmail?.dirty)" class="text-danger">
+                                <p *ngIf="vendorEmail?.hasError('required')">Email is required</p>
+                                <p *ngIf="vendorEmail?.hasError('pattern')">Enter valid email</p>
+                            </div>
+                        </div>
+                        <div class="phone">
+                            <label class="fw-bold">Phone Number:</label>
+                            <input type="tel" formControlName="UserPhone" class="input-box-size px-2" required minlength="6" maxlength="14"placeholder="+(91)-XXXXXXXXXX" (input)="noalphabets($event)" />
+                            <div *ngIf="vendorPhonenumber?.errors &&(vendorPhonenumber?.touched || vendorPhonenumber?.dirty)" class="text-danger">
+                                <p *ngIf="vendorPhonenumber?.hasError('required')">Phone number is required</p>
+                                <p *ngIf="vendorPhonenumber?.hasError('pattern')">Enter 10 digit number with country code</p>
+                            </div>
+                        </div>
+                        <div class="location">
+                            <label class="fw-bold">Location:</label>
+                            <input type="text" formControlName="UserLocation" class="input-box-size px-2" required>
+                            <div *ngIf="vendorLocation?.errors &&(vendorLocation?.touched || vendorLocation?.dirty)" class="text-danger">
+                                <p *ngIf="vendorLocation?.hasError('required')">Location is required</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="login-text-right">
+                        <small><a class="register-forms " [routerLink]="['/login']">Already have an account?</a></small>
+                    </div>
+                    <div class="whole-register-btn px-3 py-3">
+                        <button class="register-btn" type="submit">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>

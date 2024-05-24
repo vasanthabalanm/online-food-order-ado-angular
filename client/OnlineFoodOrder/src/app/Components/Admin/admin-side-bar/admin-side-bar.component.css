@@ -1,0 +1,53 @@
+*:not(.icon) {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+.logo-name {
+  color: #000000;
+  text-decoration: none;
+}
+.TopNavbar {
+  display: flex;
+  justify-content: space-between;
+}
+nav ul {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  justify-content: center;
+}
+li {
+  list-style: none;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  align-items: center;
+  margin-right: 12px;
+}
+
+li a {
+  text-decoration: none;
+  color: #000000;
+  padding: 5px;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+li a:hover {
+  background-color: #ffc700;
+  color: #fff;
+  border-radius: 5px;
+}
+.logout-btn {
+  background-color: #ffc700;
+  border: 1px solid #fff;
+  border-radius: 50px;
+  width: 50px;
+  height: 50px;
+}
+.icon {
+  font-size: 25px;
+  color: #fff;
+}
+.logout-btn:hover {
+  background-color: #000000;
+}

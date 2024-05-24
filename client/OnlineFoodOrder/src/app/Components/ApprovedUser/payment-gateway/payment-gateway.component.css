@@ -1,0 +1,43 @@
+.logo-name {
+  color: #000000;
+  text-decoration: none;
+}
+.entire-login-form {
+  margin: 0 auto;
+  width: 700px;
+  background-color: aqua;
+}
+.card-img {
+  width: 400px;
+  height: 250px;
+}
+.card-details {
+  display: flex;
+  flex-direction: column;
+  margin-top: -50px;
+  margin-left: 80px;
+}
+
+.payment-btn {
+  border: 1px solid white;
+  background-color: #ffc700;
+  color: #fff;
+  font-weight: 700;
+  border-radius: 7px;
+  text-align: center;
+  width: 150px;
+  height: 30px;
+}
+.entire-payment-form {
+  display: flex;
+  justify-content: center;
+}
+.label-heading {
+  font-size: 25px;
+  font-weight: 600;
+}
+.input-box {
+  width: 200px;
+  border-radius: 5px;
+  border: 1px solid gray;
+}

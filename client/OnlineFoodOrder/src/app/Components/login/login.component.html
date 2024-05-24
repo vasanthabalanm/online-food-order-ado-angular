@@ -1,0 +1,56 @@
+<div class="container-fluid">
+    <div class="d-flex justify-content-between">
+        <div class="d-flex pt-2 px-4">
+            <div>
+                <img src="../../../assets/images/logo.png" width="50px" height="50px">
+            </div>
+            <div>
+                <a [routerLink]="['']" class="logo-name"><h5 class="py-3 fw-bold">Food <span class="text-warning">Service</span></h5></a>
+            </div>
+        </div> 
+        <div class="d-flex py-4">
+            <div class="px-2">
+                <button class="vendor-btn "><a class="register-vendor-link" [routerLink]="['/register-vendor']">Register Vendor</a> </button>
+            </div>
+            <div class="px-2">
+                <button class="user-btn"><a class="register-user-link" [routerLink]="['/register-user']">Register User</a></button>
+            </div>
+        </div>
+    </div>
+   <div class="container pt-2">
+        <div class="center-box py-5">
+            <div class="overall">
+                <p class="invite-heading">"Every login is an invitation to a <br> gastronomic journey"</p> 
+                <p class="invite-provider">-Buckle up for a tasty ride!</p>
+            </div>
+            <div class="entire-login-form">
+                <form [formGroup]="logindetails" (submit)="formsubmit()" class="px-5 py-5">
+                    <p class="note-back fw-bold">Welcome Back!</p>
+                    <div class="email">
+                        <label class="fw-bold">Email:</label>
+                        <input type="email" formControlName="Email" class="input-box-size px-2" required>
+                        <div *ngIf="email?.errors &&(email?.touched || email?.dirty)" class="text-danger">
+                            <p *ngIf="email?.hasError('required')">Email is required*</p>
+                            <p *ngIf="email?.hasError('pattern')">Enter valid email*</p>
+                        </div>
+                    </div>
+                    <div class="password">
+                        <label class="fw-bold">Password:</label>
+                        <div class="d-flex">
+                            <div>
+                                <input type="password" formControlName="UserPassword" class="input-box-size px-2" required >
+                            </div>
+                        </div>
+                        <div *ngIf="password?.errors &&(password?.touched || password?.dirty)" class="text-danger">
+                            <p *ngIf="password?.hasError('required')">Password is required*</p>
+                        </div>
+                    </div>
+                    <div class="whole-login-btn px-3 py-3">
+                        <button class="login-btn" type="submit">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>                          
+   </div>
+    
+</div>

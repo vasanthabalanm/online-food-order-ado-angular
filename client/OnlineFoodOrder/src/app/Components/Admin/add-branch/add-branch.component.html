@@ -1,0 +1,67 @@
+<div class="container py-3">
+  <div class="d-flex justify-content-between">
+    <div class=" card bg-light cards">
+      <div class="card-body">
+        <form [formGroup]="addBranchForm" (ngSubmit)="branchDetails()" class="entire-branch-form">
+          <div class="py-4">
+              <label class="fw-bold">Select the Hotel:</label>
+            <br>
+            <select formControlName="HotelId" class="selection-box" (change)="getAllhotel()">
+              <option value="" disabled selected>Select the Hotel</option>
+              <option *ngFor="let hotel of listofHotel" [value]="hotel.id">{{hotel.hotelName}}</option>
+            </select>
+            <div *ngIf="hotelid?.errors && (hotelid?.touched || hotelid?.dirty)" class="text-danger">
+              <p *ngIf="hotelid?.hasError('required')">Hotel is required</p>
+            </div>
+          </div>
+          <p class="fw-bold text-center">Branch Details</p>
+            <div class="label-names">
+              <div>
+                <label class="fw-bold px-2">Branch Name:</label>
+              </div>
+              <div class="px-4">
+                <input type="text" formControlName="BranchName" class="input-box-sizes" />
+                <div *ngIf="branchname?.errors && (branchname?.touched || branchname?.dirty)" class="text-danger">
+                  <p *ngIf="branchname?.hasError('required')">Branch Name is required</p>
+                </div>
+              </div>
+            </div>
+            <div class="label-names">
+              <div>
+                <label class="fw-bold px-2">Branch Location:</label>
+              </div>
+              <div class="px-4">
+                <input type="text" formControlName="BranchLocation" class="input-box-sizes"/>
+                <div *ngIf="branchlocation?.errors && (branchlocation?.touched || branchlocation?.dirty)" class="text-danger">
+                  <p *ngIf="branchlocation?.hasError('required')">Branch Location is required</p>
+                </div>
+              </div>
+            </div>
+            <div class="label-names">
+              <div>
+                <label class="fw-bold px-2">Branch Phone Number:</label>
+              </div>
+              <div class="px-4">
+                <input type="email" formControlName="BranchPhoneNumber" class="input-box-sizes" placeholder="+91-XXXXXXXXXX" maxlength="14"/>
+                <div *ngIf="branchphonenumber?.errors && (branchphonenumber?.touched || branchphonenumber?.dirty)" class="text-danger">
+                  <p *ngIf="branchphonenumber?.hasError('required')">Branch Phone is required</p>
+                  <p *ngIf="branchphonenumber?.hasError('pattern')">Please enter valid Phone</p>
+                </div>
+              </div>
+            </div>
+    
+          <div class="d-flex justify-content-center px-3 py-4">
+            <div class="px-3">
+              <button type="submit" class="add-branch-btn" [disabled]="!addBranchForm.valid">
+                submit
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div>
+      <app-add-menu-item></app-add-menu-item>
+    </div>
+  </div>
+</div>

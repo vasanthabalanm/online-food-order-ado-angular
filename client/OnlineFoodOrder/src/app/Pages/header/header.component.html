@@ -1,0 +1,48 @@
+<nav class="navbar bg-body-tertiary fixed-top">
+    <div class="container-fluid px-5">
+        <div class="d-flex">
+            <div>
+                <img src="../../../assets/images/logo.png" width="50px" height="50px">
+            </div>
+            <div>
+                <h5 class="offcanvas-title fw-bold p-3" id="offcanvasNavbarLabel">Food <span class="text-warning">Service</span></h5>
+            </div>
+        </div>  
+      <button class="navbar-toggler button-area" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
+        <i class="icon fa fa-bars navbar-size" ></i>
+      </button>
+      
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+            <img src="../../../assets/images/logo.png" width="50px" height="50px">
+          <h5 class="offcanvas-title fw-bold" id="offcanvasNavbarLabel">Food <span class="text-warning">Service</span></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a class="nav-link active fw-bold"><i class="icon fa fa-home"></i>Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" >Services</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" >Branch</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link">Contact-Us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" >Settings</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" >Buy Product</a>
+            </li>
+          </ul>
+          <div class="login-outter-box">
+            <button class="login-btn"><a [routerLink]="['login']">Login</a></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>

@@ -1,0 +1,24 @@
+.cards {
+  height: 500px;
+}
+.label-names {
+  display: flex;
+  flex-direction: column;
+}
+.input-box-sizes {
+  width: 300px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.entire-branch-form {
+  margin: 0 auto;
+}
+.add-branch-btn {
+  border: 1px solid #fff;
+  background-color: #ffc700;
+  color: #fff;
+  padding: 2px;
+  border-radius: 5px;
+  width: 100px;
+}

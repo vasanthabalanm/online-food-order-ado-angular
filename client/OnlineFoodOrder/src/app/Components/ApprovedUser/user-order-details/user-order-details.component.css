@@ -1,0 +1,48 @@
+*:not(.icon) {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+.whole-table-content {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.whole-table-content thead {
+  background-color: #f2f2f2;
+}
+
+.whole-table-content th {
+  padding: 12px;
+  text-align: left;
+  font-weight: bold;
+}
+
+.whole-table-content tbody tr {
+  border-bottom: 1px solid #ddd;
+}
+
+.whole-table-content td {
+  padding: 10px;
+}
+
+.whole-table-content .btn {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+.whole-table-content .icon {
+  margin-right: 5px;
+}
+
+.whole-table-content .btn:hover {
+  background-color: #ddd;
+}
+
+.whole-table-content #noData td {
+  text-align: center;
+  font-style: italic;
+  color: #777;
+}

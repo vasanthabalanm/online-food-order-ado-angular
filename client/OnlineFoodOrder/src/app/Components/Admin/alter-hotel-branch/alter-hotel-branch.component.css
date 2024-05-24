@@ -1,0 +1,171 @@
+*:not(.icon) {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+.whole-table-content {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.whole-table-content thead {
+  background-color: #f2f2f2;
+}
+
+.whole-table-content th {
+  padding: 12px;
+  text-align: left;
+  font-weight: bold;
+}
+
+.whole-table-content tbody tr {
+  border-bottom: 1px solid #ddd;
+}
+
+.whole-table-content td {
+  padding: 10px;
+}
+
+.whole-table-content .btn {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+.whole-table-content .icon {
+  margin-right: 5px;
+}
+
+.whole-table-content .btn:hover {
+  background-color: #ddd;
+}
+
+.whole-table-content #noData td {
+  text-align: center;
+  font-style: italic;
+  color: #777;
+}
+
+.li-height {
+  height: 250px;
+  width: 500px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+ul li {
+  list-style: none;
+  font-size: 18px;
+}
+.contain-wrapper {
+  display: flex;
+  justify-content: space-around;
+}
+.icon {
+  font-size: 20px;
+}
+.edited-bin {
+  color: #fff;
+}
+.btns {
+  width: 40px;
+  background-color: #c76161;
+  border-radius: 5px;
+  padding: 10px;
+  border: 1px solid #fff;
+}
+
+.edit-btn {
+  font-size: 20px;
+  color: #fff;
+}
+.edited-btns {
+  width: 40px;
+  background-color: rgb(39, 39, 104);
+  border-radius: 5px;
+  padding: 10px;
+  border: 1px solid #fff;
+  margin-right: 12px;
+}
+.li-width {
+  height: 200px;
+  width: 700px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+.add-hotel-btn {
+  border: 1px solid #fff;
+  background-color: #ffc700;
+  color: #fff;
+  padding: 2px;
+  border-radius: 5px;
+  width: 100px;
+  margin-top: 5px;
+  float: right;
+}
+.hotel-input-box {
+  width: 400px;
+  height: 40px;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+.cards {
+  height: 500px;
+}
+.label-names {
+  display: flex;
+  flex-direction: column;
+}
+.input-box-sizes {
+  width: 300px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.entire-branch-form {
+  margin: 0 auto;
+}
+.add-branch-btn {
+  border: 1px solid #fff;
+  background-color: #ffc700;
+  color: #fff;
+  padding: 2px;
+  border-radius: 5px;
+  width: 100px;
+}
+
+th {
+  width: 1%;
+  text-align: center;
+}
+table,
+th {
+  border: 1px solid black;
+}
+td {
+  text-align: center;
+  border-right: 1px solid black;
+}
+
+.add-menu-btn {
+  border: 1px solid #fff;
+  background-color: #ffc700;
+  color: #fff;
+  padding: 2px;
+  border-radius: 5px;
+  width: 100px;
+}
+.selection-box {
+  width: 200px;
+  height: 30px;
+}
+.input-box-size {
+  width: 100%;
+}
+.menu-box-size {
+  height: 220px;
+  width: 700px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}

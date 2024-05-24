@@ -1,0 +1,65 @@
+<app-header></app-header>
+<div class="container-fluid mt-5">
+    <!-- Maincontent -->
+    <div class="container py-5 px-5 main-whole-content">
+        <div class="whole-main-content pt-5">
+            <p class="main-heading">Crave,Click <span class="connecting-word">&</span> Enjoy!</p>
+            <p class="sub-heading">Elevate Your Meals With Our Seamless Order Experiance.</p>
+            <button class="place-order-btn">Offers are waiting <i class=" icon fa fa-cart-plus"></i></button>
+        </div>
+        <div class="pt-5">
+            <img src="../../../assets/images/alter-main-bg-removebg-preview.png" class="main-bg-images" alt="main-bg-images">
+        </div>
+    </div>
+    <!-- Services static -->
+    <div class="container py-5">
+        <div class="service-main-content">
+            <h3 class="service-heading">Services</h3>
+        </div>
+        <div class="container py-5 d-flex justify-content-evenly">
+            <div>
+                <div class="card cards py-3" style="width: 200px;height: max-content;">
+                    <p class="text-center "><img src="../../../assets/images/crab.png"  width="50px" height="50px"></p>
+                    <p class="card-text text-center fw-bold fs-5 text-secondary">Food</p>
+                  </div>
+            </div>
+            <div>
+                <div class="card cards py-3" style="width: 200px;height: max-content;">
+                    <p class="text-center"><img src="../../../assets/images/juice.png"  width="50px" height="50px"></p>
+                    <p class="card-text text-center fw-bold fs-5 text-secondary">Juice</p>
+                  </div>
+            </div>
+            <div>
+                <div class="card- cards py-3" style="width: 200px;height: max-content;">
+                    <p class="text-center"><img src="../../../assets/images/icecream.png"  width="50px" height="50px"></p>
+                    <p class="card-text text-center fw-bold fs-5 text-secondary">Dessert</p>
+                  </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- userMenus -->
+    <div class="container py-5">
+        <div class="service-main-content">
+            <h3 class="loginmenu-heading">Please Login to Order!</h3>
+        </div>
+
+        <div *ngFor="let menu of Menulist;let i=index" class="card menu-card" style="width: 800px;">
+            <div class="d-flex justify-content-around">
+                <div>
+                    <img src="../../../assets/images/foodvariety/{{i+1}}.jpg" class=" image-sizes">
+                </div>
+                <div class="d-flex align-items-center">
+                    <div class="card-body">
+                        <h3 class="card-text fw-bold">{{menu.menuItems}}</h3>
+                        <p>{{menu.branchName}}</p>
+                        <p>{{menu.branchLocation}}</p>
+                        <h4 class="fw-bold">{{menu.price}}/-Rs</h4>
+                      </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
+

@@ -1,0 +1,95 @@
+<div class="container-fluid py-5">
+    <p class="welcome">Welcome <b>{{email}}!</b></p>
+    <div class="service-main-content">
+        <h3 class="loginmenu-heading">Select your Choice!</h3>
+    </div>
+
+    <!-- <div class="filterByLocation">
+        <form [formGroup]="filterItems" (submit)="ItemValues()">
+            <input type="text" formControlName="menuItems">
+            <input type="text" formControlName="branchLocation">
+            <button type="submit">Filter</button>
+        </form>
+    </div> -->
+
+    <div class="container d-flex">
+        <div class="py-3">
+            <div *ngFor="let menu of Menulist;let i=index" class="card menu-card" style="width: 600px;">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <img src="../../../assets/images/foodvariety/{{i+1}}.jpg" class=" image-sizes" alt="...">
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <div class="card-body">
+                            <h3 class="card-text fw-bold">{{menu.menuItems}}</h3>
+                            <p>BranchName: {{menu.branchName}}</p>
+                            <p>Location: {{menu.branchLocation}}</p>
+                            <h4 class="fw-bold">{{menu.price}}/-Rs</h4>                            
+                            <button type="button" class="float-end add-cart-btn" data-bs-toggle="modal" data-bs-target="#MenuModal" (click)="Orders(menu)">Add Cart</button>
+                                <div class="modal fade" id="MenuModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Add Cart Items</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModel()"></button>
+                                            </div>
+                                            <div class="modal-body d-flex justify-content-center px-5">
+                                                <form [formGroup]="AddOrder" >
+                                                    <div class="py-2">
+                                                        <label for="orderCount">Order Count:</label>
+                                                        <div>
+                                                            <button class="operation" (click)="decrementOrderCount()">-</button>
+                                                            <input class="input-count-display" type="text" id="orderCount" [value]="orderCount" formControlName="quantityOfOrder" readonly required>
+                                                            <button class="operation" (click)="incrementOrderCount()">+</button>
+                                                        </div>
+                                                    </div>                                                    
+                                                    <button type="submit" class="add-cart-btn float-end" (click)="formOrdersubmit()">Add Item</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    
+        <div class="cart-box">
+                <h3>Cart Items:</h3>
+                <div class="card" style="width: 600px;">
+                    <div class="card-body">
+                    <h5 class="card-title">Pending Cart:</h5>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Menu Name</th>
+                                <th>Branch Location</th>
+                                <th>Quantity Counts</th>
+                                <th>Price</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody class="cart-boxs" *ngIf="getCartItems() && getCartItems().length > 0; else noData">
+                            <tr *ngFor="let item of getCartItems(); let i = index">
+                                <td>{{item.menuItems}}</td>
+                                <td>{{item.branchLocation}}</td>
+                                <td>{{item.quantityOfOrder}}</td>
+                                <td>{{item.price}}</td>
+                                <td><button class="btn btn-danger" (click)="removeFromCart(i)"><i class="fa fa-trash-o icon edited-bin"></i>Remove</button></td>
+                            </tr>
+                        </tbody>
+                        <ng-template #noData>
+                            <tr>
+                            <td colspan="7">No Cart Added!</td>
+                            </tr>
+                        </ng-template>
+                    </table>
+                    </div>
+                </div>
+                <div class="px-3 py-2">
+                    <button (click)="PlaceOrder()" class="btn btn-success float-end">Place Order</button>
+                </div>
+        </div>
+    </div>  
+</div>

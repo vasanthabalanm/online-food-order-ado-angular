@@ -1,0 +1,317 @@
+<div class="container-fluid">
+    <h3 class="fw-bold text-center">Subscriber's list</h3>
+    <div class="container-fluid bg-light d-flex justify-content-around">
+        <div class="px-3 py-5">
+            <h3 class="fw-bold">Approved Users!</h3>
+            <table class="whole-table-content  bg-white">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Mail</th>
+                        <th>Role</th>
+                        <th>Phone Number</th>
+                        <th>Delete </th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="ApprovedUserData && ApprovedUserData.length > 0; else noData">
+                    <tr *ngFor="let approveUser of ApprovedUserData">
+                        <td>{{approveUser.userName}}</td>
+                        <td>{{approveUser.email}}</td>
+                        <td>{{approveUser.userRole}}</td>
+                        <td>{{approveUser.userPhone}}</td>
+                        <td class="text-center">
+                            <button class="btns" (click)="deleteUser(approveUser.id,approveUser.email)">
+                                <i class="fa fa-trash-o icon edited-bin"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+                <ng-template #noData>
+                    <tr>
+                        <td colspan="7">No data available</td>
+                    </tr>
+                </ng-template>
+            </table>
+        </div>
+        <!-- vendor -->
+        <div class="px-3 py-5">
+            <h3 class="fw-bold">Approved Vendors!</h3>
+            <table class="whole-table-content bg-white">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Mail</th>
+                        <th>Role</th>
+                        <th>Phone Number</th>
+                        <th>Decline </th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="approvedVendorData && approvedVendorData.length > 0; else noData">
+                    <tr *ngFor="let approvedVendor of approvedVendorData">
+                        <td>{{approvedVendor.userName}}</td>
+                        <td>{{approvedVendor.email}}</td>
+                        <td>{{approvedVendor.userRole}}</td>
+                        <td>{{approvedVendor.userPhone}}</td>
+                        <td class="text-center">
+                            <button class="btns" (click)="deleteVendor(approvedVendor.id,approvedVendor.email)">
+                                <i class="fa fa-trash-o icon edited-bin"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+                <ng-template #noData>
+                    <tr>
+                        <td colspan="7">No data available</td>
+                    </tr>
+                </ng-template>
+            </table>
+        </div>
+    </div>
+
+    <div class="contain-wrapper py-5">
+        <div class="container">
+            <h3 class="fw-bold">Hotel's list</h3>
+            <div class="li-height py-3 bg-light">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>SI.No</th>
+                            <th>Hotel Name</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let hotel of listofHotel;let i =index">
+                            <td>{{i+1}}</td>
+                            <td>{{hotel.hotelName}}</td>
+                            <td><button type="button" class="edited-btns" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="setFormValues(hotel)"><i class="fa fa-pencil-square-o icon edit-btn"></i></button></td>
+                            <td><button class="btns" (click)="deleteHotel(hotel)"><i class="fa fa-trash-o icon edited-bin"></i></button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <!-- Modal for edit  -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" >
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Update Hotel</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="updateHotels()" ></button>
+                            </div>
+                            <div class="modal-body px-5">
+                                <form [formGroup]="Alterhotel" (submit)="formHotelsubmit()">
+                                    <input type="text" class="hotel-input-box" formControlName="HotelName" placeholder="Enter Hotel Name" required >
+                                        <div *ngIf="hotelname?.errors &&(hotelname?.touched || hotelname?.dirty)" class="text-danger">
+                                            <p *ngIf="hotelname?.hasError('required')">HotelName is required</p>
+                                            <p *ngIf="hotelname?.hasError('pattern')">Enter valid Hotel Name</p>
+                                            <p *ngIf="hotelname?.hasError('nonamespace')">No Start and End space</p>
+                                        </div> 
+                                    <button type="submit" class="add-hotel-btn">Save</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <h3 class="fw-bold">Branch List</h3>
+            <div class="li-width py-3 bg-light">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>SI.No</th>
+                            <th>Branch Name</th>
+                            <th>Branch Location</th>
+                            <th>Branch PhoneNumber</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let branch of listbranches;let i =index">
+                            <td>{{i+1}}</td>
+                            <td>{{branch.branchName}}</td>
+                            <td>{{branch.branchLocation}}</td>
+                            <td>{{branch.branchPhoneNumber}}</td>
+                            <td><button type="button" class="edited-btns" data-bs-toggle="modal" data-bs-target="#exampleModals" (click)="setalterBranchValues(branch)"><i class="fa fa-pencil-square-o icon edit-btn"></i></button></td>
+                            <td><button class="btns" (click)="deletebranch(branch)"><i class="fa fa-trash-o icon edited-bin"></i></button> </td>
+                        </tr>
+                    </tbody>
+                </table>
+                    <!-- model for edit -->
+                    <div class="modal fade" id="exampleModals" tabindex="-1" aria-labelledby="exampleModalLabel" >
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Update HotelBranch Details</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="updateHotelbranch()"></button>
+                                </div>
+                                <div class="modal-body px-5">
+                                        <form [formGroup]="alterBranchForm" (ngSubmit)="alterbranchDetails()" class="entire-branch-form">
+                                            <div class="py-4">
+                                                <label class="fw-bold">Select the Hotel:</label>
+                                                <br>
+                                                <select formControlName="HotelId" class="selection-box" (change)="getAllbranch()">
+                                                    <option value="" disabled selected>Select the Hotel</option>
+                                                    <option *ngFor="let hotel of listofHotel" [value]="hotel.id">{{hotel.hotelName}}</option>
+                                                </select> <br>
+                                                <small class="text-danger">Please don't change</small>
+                                            </div>
+                                            <p class="fw-bold text-center">Branch Details</p>
+                                            <div class="label-names">
+                                                <div>
+                                                    <label class="fw-bold px-2">Branch Name:</label>
+                                                </div>
+                                                <div class="px-4">
+                                                    <input type="text" formControlName="BranchName" class="input-box-sizes" required />
+                                                    <div *ngIf="branchname?.errors && (branchname?.touched || branchname?.dirty)" class="text-danger">
+                                                        <p *ngIf="branchname?.hasError('required')">Branch Name is required</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="label-names">
+                                                <div>
+                                                    <label class="fw-bold px-2">Branch Location:</label>
+                                                </div>
+                                                <div class="px-4">
+                                                    <input type="text" formControlName="BranchLocation" class="input-box-sizes"/>
+                                                    <div *ngIf="branchlocation?.errors && (branchlocation?.touched || branchlocation?.dirty)" class="text-danger">
+                                                        <p *ngIf="branchlocation?.hasError('required')">Branch Location is required</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="label-names">
+                                                <div>
+                                                    <label class="fw-bold px-2">Branch Phone Number:</label>
+                                                </div>
+                                                <div class="px-4">
+                                                    <input type="email" formControlName="BranchPhoneNumber" class="input-box-sizes" placeholder="+91-XXXXXXXXXX" maxlength="14"/>
+                                                    <div *ngIf="branchphonenumber?.errors && (branchphonenumber?.touched || branchphonenumber?.dirty)" class="text-danger">
+                                                        <p *ngIf="branchphonenumber?.hasError('required')">Branch Number is required</p>
+                                                        <p *ngIf="branchphonenumber?.hasError('pattern')">Please enter valid number</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    
+                                            <div class="d-flex justify-content-center px-3 py-4">
+                                                <div class="px-3">
+                                                    <button type="submit" class="add-branch-btn" [disabled]="!alterBranchForm.valid">submit</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h3 class="fw-bold text-center">Menu list</h3>
+        <div class="container menu-box-size">
+            <table>
+                <thead>
+                    <tr>
+                        <th>SI.No</th>
+                        <th>Item Name</th>
+                        <th>Item Quantity</th>
+                        <th>Item FixedPrice</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let menu of menuLists;let i =index">
+                        <td>{{i+1}}</td>
+                        <td>{{menu.menuItems}}</td>
+                        <td>{{menu.menuQuantity}}</td>
+                        <td>{{menu.price}}</td>
+                        <td><button type="button" class="edited-btns" data-bs-toggle="modal" data-bs-target="#menuModals" (click)="setalterMenuValues(menu)"><i class="fa fa-pencil-square-o icon edit-btn"></i></button></td>
+                        <td><button class="btns" (click)="deleteMenu(menu)"><i class="fa fa-trash-o icon edited-bin"></i></button> </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- menu edit modal -->
+        <div class="modal fade" id="menuModals" tabindex="-1" aria-labelledby="menuModal" >
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="menuModal">Update HotelBranch Details</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="updateHotelbranch()"></button>
+                        </div>
+                        <div class="modal-body px-5">
+                            <form [formGroup]="alterMenuForm" (ngSubmit)="alterMenuDetails()">
+                                <label class="fw-bold">Select the Branch:</label>
+                                <br>
+                                <select formControlName="HotelBranchId" class="selection-box" (change)="getAllbranch()">
+                                    <option value="" disabled selected>select the Branch</option>
+                                    <option *ngFor="let branch of listbranches" [value]="branch.id">{{branch.branchName}}</option>
+                                </select><br>
+                                <small class="text-danger">Please Don't Change</small>
+                        
+                                <div>
+                                    <p class="fw-bold pt-4">Menu Items</p>
+                                </div>
+                        
+                                <div class="container fixed-height-add-menu py-3">
+                                    <table>
+                                        <thead>
+                                        <tr>
+                                            <th>Menu Name</th>
+                                            <th>Menu Quantity</th>
+                                            <th>Price(Rs)</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody formArrayName="MenuDetails">
+                                            <tr *ngFor="let menu of getMenuDetailsControls();let i = index " [formGroupName]="i">
+                                                <td>
+                                                    <input type="text" class="input-box-size" formControlName="MenuItems" />
+                                                    <div *ngIf="finderrorinFormarray(i).controls['MenuItems'].errors && (finderrorinFormarray(i).controls['MenuItems'].dirty || finderrorinFormarray(i).controls['MenuItems'].touched)">
+                                                        <small class="text-danger" *ngIf="finderrorinFormarray(i).controls['MenuItems'].hasError('required')">
+                                                            Menu Name is required
+                                                        </small>
+                                                        <small class="text-danger" *ngIf="finderrorinFormarray(i).controls['MenuItems'].hasError('nonamespaces')">
+                                                            No empty spaces both start and end
+                                                        </small>
+                                                    </div>                                        
+                                                </td>
+                                
+                                                <td>
+                                                    <input type="number" class="input-box-size" formControlName="MenuQuantity" min="1" />
+                                                    <div *ngIf="finderrorinFormarray(i).controls['MenuQuantity'].errors && (finderrorinFormarray(i).controls['MenuQuantity'].dirty || finderrorinFormarray(i).controls['MenuQuantity'].touched)">
+                                                        <small class="text-danger" *ngIf="finderrorinFormarray(i).controls['MenuQuantity'].hasError('required')">
+                                                            Quantity is required
+                                                        </small>
+                                                    </div>                                        
+                                                </td>
+
+                                                <td>
+                                                    <input type="number" class="input-box-size" formControlName="Price" min="1"/>
+                                                    <div *ngIf="finderrorinFormarray(i).controls['Price'].errors && (finderrorinFormarray(i).controls['Price'].dirty || finderrorinFormarray(i).controls['Price'].touched)">
+                                                        <small class="text-danger" *ngIf="finderrorinFormarray(i).controls['Price'].hasError('required')">
+                                                            Price is required
+                                                        </small>
+                                                    </div>                                        
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                        
+                                <div class="d-flex float-end px-3">
+                                    <div class="px-3">
+                                        <button type="submit" class="add-menu-btn" [disabled]="!alterMenuForm.valid || alterMenuForm.get('MenuDetails')?.invalid">submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>

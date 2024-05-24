@@ -1,0 +1,87 @@
+
+<div class="entire-payment-form py-4">
+    <form [formGroup]="paymentForm" (submit)="processPayment()">
+        <label for="paymentOption " class="label-heading">Select Payment Option:</label>
+        <div class="py-2">
+            <input type="radio" id="card" formControlName="paymentOption" value="card" />
+            <label for="card">Card</label>
+            <div *ngIf="option?.value === 'card'">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <label for="cardNumber">Card Number:</label>
+                    </div>
+                    <div>
+                        <input type="text" id="cardNumber" class="input-box" formControlName="cardNumber"
+                            placeholder="Enter 16 digit Number" required  maxlength="16"/>
+                        <br />
+                        <div *ngIf="card?.errors &&(card?.touched || card?.dirty)" class="text-danger">
+                            <p *ngIf="card?.hasError('required')">CardNumber is required</p>
+                            <p *ngIf="card?.hasError('pattern')">Enter valid Pattern</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <label for="expiryDate">Expiry Date:</label>
+                    </div>
+                    <div>
+                        <input type="text" id="expiryDate" class="input-box" formControlName="expiryDate"
+                            placeholder="MM/YY" required maxlength="5" />
+                        <br />
+                        <div *ngIf="expdate?.errors && (expdate?.touched || expdate?.dirty)" class="text-danger">
+                            <p *ngIf="expdate?.hasError('required')">ExpiryDate is required</p>
+                            <p *ngIf="expdate?.hasError('pattern')">Enter valid MM/YY format</p>
+                            <p *ngIf="expdate?.hasError('expiredDate')">Expiry date must be in the future</p>
+                        </div>
+                          
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <label for="cvv">CVV:</label>
+                    </div>
+                    <div>
+                        <input type="text" id="cvv" class="input-box" formControlName="cvv" placeholder="XXX"
+                            required maxlength="3"/>
+                            <div *ngIf="cvv?.errors && (cvv?.touched || cvv?.dirty)" class="text-danger">
+                                <p *ngIf="cvv?.hasError('required')">cvv is required</p>
+                                <p *ngIf="cvv?.hasError('pattern')">Enter valid CVV Number</p>
+                            </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="py-2">
+            <input type="radio" id="onlineBanking" formControlName="paymentOption" value="onlineBanking" />
+            <label for="onlineBanking">Online Banking</label>
+            <select *ngIf="option?.value === 'onlineBanking'" formControlName="selectedBank" class="input-box">
+                <option value="" disabled>Select Bank</option>
+                <option *ngFor="let bank of bankList" [value]="bank.url">
+                    {{ bank.name }}
+                </option>
+            </select>
+        </div>
+        <div class="py-2">
+            <input type="radio" id="upi" formControlName="paymentOption" value="upi"  />
+            <label for="upi">UPI</label>
+            <div *ngIf="option?.value === 'upi'">
+                <label for="upiId">Enter UPI ID:</label>
+                <input type="text" id="upiId" formControlName="upiId" class="input-box" placeholder="identity-1@bankname"/>
+                <div *ngIf="upi?.errors && (upi?.touched || upi?.dirty)" class="text-danger">
+                    <p *ngIf="upi?.hasError('required')">UPI is required</p>
+                    <p *ngIf="upi?.hasError('pattern')">Enter valid UPI</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="py-2">
+            <input type="radio" id="COD" formControlName="paymentOption" value="COD" />
+            <label for="COD">Cash On Delivery</label>
+        </div>
+
+        <div class="py-2">
+            <button type="submit" class="payment-btn">Submit Payment</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="px-3 py-5">
+        <h3 class="fw-bold">All Orders!</h3>
+        <table class="whole-table-content  bg-white">
+            <thead>
+              <tr>
+                <th>Menu Name</th>
+                <th>Mail</th>
+                <th>Branch Name</th>
+                <th>Quantity</th>
+                <th>Total Price</th>
+                <th>Order Status </th>
+                <th>Approve</th>
+
+              </tr>
+            </thead>
+            <tbody *ngIf="OrderList && OrderList.length > 0; else noData">
+                <tr *ngFor="let waitingUser of OrderList">
+                    <td>{{waitingUser.menuItems}}</td>
+                    <td>{{waitingUser.email}}</td>
+                    <td>{{waitingUser.branchName}}</td>
+                    <td>{{waitingUser.quantityOfOrder}}</td>
+                    <td>{{waitingUser.totalPrice}}</td>
+                    <td [ngStyle]="{'color': waitingUser.orderStatus === 'Pending' ? 'red' : 'black'}">{{waitingUser.orderStatus}}</td>
+                    <td class="text-center">
+                        <button class="btn" (click)="approveOrder(waitingUser.orderId)">
+                            <i class="fa fa-check icon" ></i>
+                        </button>
+                    </td>
+                  </tr>
+            </tbody>
+            <ng-template #noData>
+                <tr>
+                  <td colspan="7">No data available</td>
+                </tr>
+            </ng-template>
+        </table>
+    </div>
+</div>

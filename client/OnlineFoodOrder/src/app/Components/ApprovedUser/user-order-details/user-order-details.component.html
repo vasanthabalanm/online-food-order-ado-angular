@@ -1,0 +1,56 @@
+<div class="container-fluid bg-light d-flex justify-content-around">
+    <div class="px-3 py-5">
+      <h3 class="fw-bold">Pending Order!</h3>
+      <table class="whole-table-content  bg-white">
+          <thead>
+            <tr>
+                <th>Menu Item Name</th>
+                <th>Quantity Of Order</th>
+                <th>Total Price</th>
+                <th>Order Status</th>
+            </tr>
+          </thead>
+          <tbody *ngIf="pendingOrderList && pendingOrderList.length > 0; else noData">
+              <tr *ngFor="let order of pendingOrderList">
+                <td>{{order.menuItems}}</td>
+                <td>{{order.quantityOfOrder}}</td>
+                <td>{{order.totalPrice}}</td>
+                <td>{{order.orderStatus}}</td>
+                </tr>
+          </tbody>
+          <ng-template #noData>
+              <tr>
+                <td colspan="7">No data available</td>
+              </tr>
+          </ng-template>
+      </table>
+  </div>
+  <!-- vendor -->
+  <div class="px-3 py-5">
+      <h3 class="fw-bold">Approved Order!</h3>
+      <table class="whole-table-content  bg-white">
+        <thead>
+          <tr>
+                <th>Menu Item Name</th>
+                <th>Quantity Of Order</th>
+                <th>Total Price</th>
+                <th>Order Status</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="approvedOrderList && approvedOrderList.length > 0; else noData">
+            <tr *ngFor="let order of approvedOrderList">
+                <td>{{order.menuItems}}</td>
+                <td>{{order.quantityOfOrder}}</td>
+                <td>{{order.totalPrice}}</td>
+                <td>{{order.orderStatus}}</td>
+            </tr>
+        </tbody>
+        <ng-template #noData>
+            <tr>
+              <td colspan="7">No data available</td>
+            </tr>
+        </ng-template>
+    </table>
+  </div>
+</div>
+

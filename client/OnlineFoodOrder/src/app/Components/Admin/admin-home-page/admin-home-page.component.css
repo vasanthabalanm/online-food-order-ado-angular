@@ -1,0 +1,83 @@
+.wrapper-main-content {
+  display: flex;
+  justify-content: space-between;
+}
+.own-card {
+  height: 100px;
+  margin-right: 15px;
+}
+.images {
+  width: 50px;
+  height: 50px;
+  margin: 15px;
+}
+.counts-hotels {
+  margin-top: 50px;
+}
+.intro-quote {
+  font-size: 30px;
+}
+.content-card-height {
+  height: 250px;
+}
+.li-height {
+  height: 165px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+ol li {
+  font-size: 18px;
+}
+.add-hotel-btn {
+  border: 1px solid #fff;
+  background-color: #ffc700;
+  color: #fff;
+  padding: 2px;
+  border-radius: 5px;
+  width: 100px;
+  margin-top: 5px;
+  float: right;
+}
+.hotel-input-box {
+  width: 400px;
+  height: 40px;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+ul li {
+  list-style: none;
+  font-size: 18px;
+}
+.li-heights {
+  height: 150px;
+}
+.new-images {
+  width: 30px;
+  height: 30px;
+}
+.bg-image {
+  background: url("../../../../assets/images/admindashboard/againcheck.jpg");
+  width: 100%;
+  height: 510px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.content-card-heights {
+  height: 250px;
+  width: 500px;
+}
+
+th {
+  width: 1%;
+  text-align: center;
+  background-color: gray;
+  color: #fff;
+}
+table,
+th {
+  border: 1px solid black;
+}
+td {
+  text-align: center;
+  border-right: 1px solid black;
+}

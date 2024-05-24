@@ -1,0 +1,35 @@
+<!-- admin -->
+<ng-container *ngIf="role === 'Admin'" class="admin-dashborad">
+    <app-admin-side-bar></app-admin-side-bar>
+    <div class="main-content">
+        <div>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</ng-container>
+
+<!-- Vendor -->
+<ng-container *ngIf="role === 'Vendor'">
+    <app-vendor-sidebar></app-vendor-sidebar>
+    <div class="main-content">
+        <div>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</ng-container>
+
+<!-- user -->
+<ng-container *ngIf="role === 'User'">
+    <app-user-side-bar></app-user-side-bar>
+    <div class="main-content">
+        <div>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</ng-container>
+
+
+<!-- footer -->
+<div class="pt-5">
+    <app-footer></app-footer>
+</div>

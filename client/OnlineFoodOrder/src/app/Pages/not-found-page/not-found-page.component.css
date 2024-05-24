@@ -1,0 +1,16 @@
+.not-found {
+  background-image: url("../../../assets/images/404.avif");
+  width: 50%;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.contetn-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.error-texts {
+  font-size: 20px;
+}
